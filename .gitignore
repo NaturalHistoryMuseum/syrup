@@ -1,0 +1,14 @@
+*.py[co]
+*~
+*.egg-info/
+build/
+dist/
+.DS_Store
+.coverage
+htmlcov
+cover
+MANIFEST
+*.spec
+*tar.gz
+*dmg
+.directory
