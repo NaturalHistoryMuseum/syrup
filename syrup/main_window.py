@@ -310,6 +310,7 @@ class MainWindow(QMainWindow):
         else:
             super(MainWindow, self).dragEnterEvent(event)
 
+    @report_to_user
     def dropEvent(self, event):
         """QWidget virtual
         """
