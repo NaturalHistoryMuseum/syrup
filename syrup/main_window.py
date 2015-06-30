@@ -97,8 +97,8 @@ class MainWindow(QMainWindow):
         self._processed = Path(QSettings().value('processed',
             str(Path(mydocuments) / 'processed')))
 
-        self._controls.inbox.set_link(str(self._inbox), self._inbox.name)
-        self._controls.processed.set_link(str(self._processed), self._processed.name)
+        self._controls.inbox.set_link(str(self._inbox.as_uri()), self._inbox.name)
+        self._controls.processed.set_link(str(self._processed.as_uri()), self._processed.name)
 
         # A stack of Path objects to be processed
         self._pending_files = []
@@ -224,7 +224,8 @@ class MainWindow(QMainWindow):
             else:
                 self._inbox = directory
                 print('New inbox directory [{0}]'.format(self._inbox))
-                self._controls.inbox.set_link(self._inbox.name)
+                self._controls.inbox.set_link(str(self._inbox.as_uri()),
+                    self._inbox.name)
                 QSettings().setValue('inbox', str(self._inbox))
                 self.new_inbox_directory()
 
@@ -242,7 +243,8 @@ class MainWindow(QMainWindow):
             else:
                 self._processed = directory
                 print('New processed directory [{0}]'.format(self._processed))
-                self._controls.processed.setText(self._processed.name)
+                self._controls.processed.set_link(str(self._processed.as_uri()),
+                    self._processed.name)
                 QSettings().setValue('processed', str(self._processed))
 
     def write_geometry_settings(self):
