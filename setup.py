@@ -29,6 +29,7 @@ setup_data = {
             {
                 'script': 'syrup.py',
                 'targetName': 'syrup.exe',
+                'icon': 'data/syrup.ico',
                 'base': 'Win32GUI',
                 'shortcutName': 'Syrup', # See http://stackoverflow.com/a/15736406
                 'shortcutDir': 'ProgramMenuFolder'
@@ -81,6 +82,7 @@ def cx_setup():
                 'packages': setup_data['packages'] + setup_data['win32']['extra_packages'],
                 'excludes': setup_data['win32']['excludes'],
                 'include_files': include_files,
+                'icon': 'data/syrup.ico'
             },
             'bdist_msi': {
                 'upgrade_code': '{fe2ed61d-cd5e-45bb-9d16-146f725e522f}'
