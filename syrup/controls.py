@@ -1,5 +1,6 @@
 from PySide.QtGui import (QFrame, QWidget, QLineEdit, QFormLayout, QPushButton,
-                          QHBoxLayout, QVBoxLayout, QLabel, QIcon, QSizePolicy)
+                          QHBoxLayout, QVBoxLayout, QLabel, QIcon, QSizePolicy,
+                          QStyle)
 from PySide.QtCore import Qt, QSize
 
 import syrup
@@ -46,7 +47,8 @@ class SelectedDirectoryWidget(QWidget):
         super(SelectedDirectoryWidget, self).__init__(parent)
         self.directory = LinkLabel('', prefix=prefix)
         self.directory.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Ignored);
-        self.choose_directory = QPushButton(QIcon.fromTheme('folder'), '')
+        icon = self.style().standardIcon(QStyle.SP_DirOpenIcon)
+        self.choose_directory = QPushButton(icon, '')
         self.choose_directory.setIconSize(QSize(16, 16))
 
         l = QHBoxLayout()
