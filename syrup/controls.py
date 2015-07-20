@@ -71,8 +71,8 @@ class Controls(QWidget):
         self.location = QLineEdit()
         l = QFormLayout()
         l.setFieldGrowthPolicy(QFormLayout.ExpandingFieldsGrow)
-        l.addRow('Specimen number', self.specimen)
-        l.addRow('Location', self.location)
+        l.addRow('Specimen barcode', self.specimen)
+        l.addRow('Location barcode', self.location)
         form = QWidget()
         form.setLayout(l)
 
