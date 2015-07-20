@@ -85,7 +85,7 @@ def cx_setup():
                 'icon': 'data/syrup.ico'
             },
             'bdist_msi': {
-                'upgrade_code': '{fe2ed61d-cd5e-45bb-9d16-146f725e522f}'
+                'upgrade_code': '{4E9476C7-B5A3-454D-AD90-2F0CD4598185}'
             }
         },
         executables=[Executable(**i) for i in setup_data['win32']['executables']]
