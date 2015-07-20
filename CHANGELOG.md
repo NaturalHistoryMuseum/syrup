@@ -1,8 +1,12 @@
 This is an overview of major changes. Refer to the git repository for a full log change.
 
+Version 0.1.2
+-------------
+- Fixed #1 - Installer has incorrect upgrade code (@quicklizard)
+
 Version 0.1.1
 -------------
-- Altered labels to 'Specimen barcode' and 'Location barcode'
+- Altered labels to 'Specimen barcode' and 'Location barcode' (@quicklizard)
 
 Version 0.1.0
 -----------
