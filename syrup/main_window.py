@@ -28,7 +28,8 @@ IMAGE_SUFFIXES_RE = '^.*\\.({0})$'.format(IMAGE_SUFFIXES_RE)
 IMAGE_SUFFIXES_RE = re.compile(IMAGE_SUFFIXES_RE, re.IGNORECASE)
 
 # Regular expression for specimen and location numbers
-VALUE_RE = re.compile('^[0-9]+$')
+SPECIMEN_RE = re.compile('^[0-9]{9}$')
+LOCATION_RE = re.compile('^L[0-9]{9}$')
 
 def qimage_of_bgr(bgr):
     """ A QImage representation of a BGR numpy array
@@ -188,7 +189,12 @@ class MainWindow(QMainWindow):
         print('MainWindow.ok')
         specimen = self._controls.specimen.text()
         location = self._controls.location.text()
-        if VALUE_RE.match(specimen) and VALUE_RE.match(location):
+        if not SPECIMEN_RE.match(specimen):
+            raise ValueError('Please enter nine digits for the specimen barcode')
+        elif not LOCATION_RE.match(location):
+            raise ValueError('Please enter a letter "L" and nine digits for the '
+                             'location barcode')
+        else:
             if not self._processed.is_dir():
                 self._processed.mkdir(parents=True)
             destination = self._processed / '{0}_{1}'.format(specimen, location)
@@ -198,9 +204,6 @@ class MainWindow(QMainWindow):
             QSettings().setValue('location', location)
             self._under_review = None
             self.process_next_pending()
-        else:
-            raise ValueError('Please enter one or more digits for both value '
-                             'and location')
 
     @report_to_user
     def cancel(self):
